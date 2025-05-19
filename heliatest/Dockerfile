@@ -5,10 +5,10 @@ FROM oven/bun:latest
 WORKDIR /app
 
 # Copy heliatest folder contents
-COPY ./ ./
+COPY heliatest/ ./
 
 # Expose port 8080
 EXPOSE 8080
 
 # Start the Bun static server to serve index.html and static files
-CMD ["bun", "server.js"]
+CMD ["bun", "run", "index.html", "--port=8080"]
