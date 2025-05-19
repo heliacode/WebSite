@@ -1,14 +1,14 @@
-# Use official Bun image
-FROM oven/bun:latest
+# Use official .NET 9 runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 
 # Set working directory
 WORKDIR /app
 
-# Copy heliatest folder contents
-COPY ./ ./
+# Copy published output
+COPY ./bin/Debug/net9.0/ ./
 
-# Expose port 3000
+# Expose port 3000 (adjust if your app uses a different port)
 EXPOSE 3000
 
-# Start the Bun static server to serve index.html and static files
-CMD ["bun", "server.js", "--host", "0.0.0.0"]
+# Run the application
+ENTRYPOINT ["dotnet", "LandingPage.dll"]
