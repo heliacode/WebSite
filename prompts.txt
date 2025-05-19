@@ -1,0 +1,3 @@
+create a modern business landing page
+Use Inter font. Business is named HeliaCode. toolbar should be sticky to top with a small margin when scroll down
+make toolbar blurry when floating
