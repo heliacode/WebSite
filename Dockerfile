@@ -5,7 +5,7 @@ FROM oven/bun:latest
 WORKDIR /app
 
 # Copy heliatest folder contents
-COPY heliatest/ ./
+COPY ./ ./
 
 # Expose port 8080
 EXPOSE 8080
