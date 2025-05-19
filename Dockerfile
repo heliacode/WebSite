@@ -1,14 +1,19 @@
-# Use official .NET 9 runtime image
+# Use official .NET 9 SDK image for build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+
+WORKDIR /src
+
+COPY . .
+
+RUN dotnet publish -c Release -o /app/publish
+
+# Use official .NET 9 runtime image for final image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 
-# Set working directory
 WORKDIR /app
 
-# Copy published output
-COPY ./bin/Debug/net9.0/ ./
+COPY --from=build /app/publish .
 
-# Expose port 3000 (adjust if your app uses a different port)
 EXPOSE 3000
 
-# Run the application
 ENTRYPOINT ["dotnet", "LandingPage.dll"]
