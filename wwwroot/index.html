@@ -75,7 +75,7 @@
         }
         .dark nav,
         .dark nav.scrolled {
-            background-color: rgba(24, 24, 27, 0.85) !important;
+            background-color: rgba(24, 24, 48, 0.5) !important;
             color: #f3f4f6;
         }
         .dark .bg-white { background-color: #232946 !important; }
@@ -196,7 +196,7 @@
                         </div>
                     </div>
                     <div class="md:w-1/2 flex justify-center">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Business Solutions" class="rounded-lg shadow-2xl animate-float max-w-full h-auto">
+                        <img src="/statics/hero_img.png" alt="Business Solutions" class="rounded-lg animate-float max-w-full h-auto">
                     </div>
                 </div>
             </div>
@@ -784,9 +784,15 @@
         }
         // On load, set theme from localStorage
         (function() {
+            const html = document.documentElement;
             const theme = localStorage.getItem('theme');
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
+            if (theme === 'dark' && html.classList.contains('light')) {
+                html.classList.remove('light');
+                html.classList.add('dark');
+            }
+            else if (theme === 'light' && html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
             }
         })();
     </script>
