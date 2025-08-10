@@ -11,6 +11,15 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            scroll-padding-top: 80px;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        .snap-section {
+            scroll-snap-align: start;
+            min-height: 100vh;
         }
         
         .gradient-bg {
@@ -45,25 +54,12 @@
             100% { transform: translateY(0px); }
         }
         
-        /* Sticky toolbar styles with blur effect */
+        /* Sticky toolbar with persistent blur */
         nav {
-            transition: all 0.333ms ease;
-            -webkit-backdrop-filter: blur(0px);
-            backdrop-filter: blur(0px);
             margin: 0 auto;
-        }
-        
-        nav.scrolled {
-            margin: 0 auto;
-            max-width: 80rem !important;
-            border-radius: 32px;
-            width: calc(100% - 16px);
-            background-color: rgba(255, 255, 255, 0.492);
+            background-color: rgba(255, 255, 255, 0.6);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 16px;
         }
 
         body.dark {
@@ -73,8 +69,7 @@
         .dark .gradient-bg {
             background: linear-gradient(135deg, #232946 0%, #3a3a5d 100%);
         }
-        .dark nav,
-        .dark nav.scrolled {
+        .dark nav {
             background-color: rgba(24, 24, 48, 0.5) !important;
             color: #f3f4f6;
         }
@@ -130,7 +125,7 @@
 </head>
 <body class="bg-gray-50 relative">
     <!-- Navigation -->
-    <nav class="fixed w-full scrolled:max-w-7xl bg-white z-50 shadow-lg transition-all duration-333" id="navbar">
+    <nav class="fixed w-full bg-white/60 backdrop-blur z-50 shadow-lg transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto pl-4 sm:pl-6 lg:pl-8 pr-2 sm:pr-4 lg:pr-6">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -177,7 +172,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white">
+    <section id="home" class="snap-section pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white">
         <!-- Blueprint SVG background for hero section -->
    
         <div class="relative z-10">
@@ -204,7 +199,7 @@
     </section>
 
     <!-- Trusted By Section -->
-    <section class="py-12 bg-white">
+    <section class="snap-section py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-gray-500 mb-8">Trusted by leading companies worldwide</p>
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
@@ -218,7 +213,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-16 bg-gray-50">
+    <section id="features" class="snap-section py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-indigo-600 font-semibold">FEATURES</span>
@@ -285,7 +280,7 @@
     </section>
 
     <!-- Solutions Section -->
-    <section id="solutions" class="py-16 bg-white">
+    <section id="solutions" class="snap-section py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="md:flex items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0">
@@ -339,7 +334,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 gradient-bg text-white">
+    <section class="snap-section py-16 gradient-bg text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
                 <div class="p-6">
@@ -363,7 +358,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-16 bg-gray-50">
+    <section id="pricing" class="snap-section py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-indigo-600 font-semibold">PRICING</span>
@@ -503,7 +498,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-16 bg-white">
+    <section class="snap-section py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-indigo-600 font-semibold">TESTIMONIALS</span>
@@ -579,7 +574,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 gradient-bg text-white">
+    <section class="snap-section py-16 gradient-bg text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
             <p class="text-xl opacity-90 mb-8 max-w-3xl mx-auto">Join thousands of businesses that are already experiencing the HeliaCode advantage.</p>
@@ -595,7 +590,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
+    <section id="contact" class="snap-section py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="md:flex">
                 <div class="md:w-1/2 mb-10 md:mb-0">
@@ -743,39 +738,6 @@
             menu.classList.toggle('hidden');
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
-        });
-
-        // Add blur effect and margin to navbar on scroll
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 515) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
         // Dark mode toggle
         function toggleDarkMode() {
             const html = document.documentElement;
@@ -786,13 +748,8 @@
         (function() {
             const html = document.documentElement;
             const theme = localStorage.getItem('theme');
-            if (theme === 'dark' && html.classList.contains('light')) {
-                html.classList.remove('light');
+            if (theme === 'dark') {
                 html.classList.add('dark');
-            }
-            else if (theme === 'light' && html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
             }
         })();
     </script>
